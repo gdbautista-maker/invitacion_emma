@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invitación | Emma cumple 3</title>
+  <meta name="description"
+    content="Invitación infantil temática sirenita con burbujas, peces y botón de confirmación por WhatsApp." />
+  <meta name="author" content="Gerardo Bautista" />
+  <meta name="keywords" content="invitación, cumpleaños, fiesta, sirenita, niños, Emma, Tequisquiapan, Qro" />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg1: #0f5e9c;
+      --bg2: #1aa4c9;
+      --bg3: #7ad3e6;
+      --accent: #ff71b8;
+      --accent-2: #ffd166;
+      --text: #f7fbff;
+      --card: #ffffffee;
+      --whatsapp: #25D366;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: Fredoka, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg1), var(--bg2) 40%, var(--bg3));
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 72px 16px 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .bubbles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -10vh;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #fff8, #fff2 40%, #fff0 70%);
+      filter: blur(0.2px);
+      animation: rise linear forwards;
+      opacity: .85;
+    }
+
+    @keyframes rise {
+      to {
+        transform: translateY(-115vh);
+        opacity: .1
+      }
+    }
+
+    /* Peces con imágenes */
+    .fish {
+      position: absolute;
+      width: 60px;
+      opacity: .9;
+    }
+
+    .fish img {
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+      animation: swimWiggle 1.6s ease-in-out infinite;
+    }
+
+    .swim-right {
+      left: -80px;
+      animation: swimR linear infinite;
+    }
+
+    .swim-left {
+      right: -80px;
+      animation: swimL linear infinite;
+      transform: scaleX(-1);
+    }
+
+    @keyframes swimR {
+      from {
+        left: -100px;
+      }
+
+      to {
+        left: calc(100% + 100px);
+      }
+    }
+
+    @keyframes swimL {
+      from {
+        right: -100px;
+      }
+
+      to {
+        right: calc(100% + 100px);
+      }
+    }
+
+    @keyframes swimWiggle {
+
+      0%,
+      100% {
+        transform: rotate(10deg);
+      }
+
+      50% {
+        transform: rotate(4deg);
+      }
+    }
+
+    .waves {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 120px;
+    }
+
+    .wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      opacity: .5
+    }
+
+    .wave svg {
+      width: 200%;
+      height: 100%;
+    }
+
+    .wave.w1 {
+      animation: drift 12s linear infinite;
+    }
+
+    .wave.w2 {
+      animation: drift 18s linear infinite reverse;
+      opacity: .35
+    }
+
+    @keyframes drift {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .curved-title {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto 10px;
+    }
+
+    .curved-title svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .curved-title text {
+      font-family: Pacifico, Fredoka, cursive;
+      font-size: 70px;
+      fill: var(--accent-2);
+      paint-order: stroke;
+      stroke: #0b3b6a;
+      stroke-width: 1.2px;
+    }
+
+    .name-age {
+      font-size: clamp(30px, 6vw, 56px);
+      font-weight: 700;
+      text-shadow: 0 2px 0 #0b3b6a90;
+    }
+
+    .sub {
+      font-size: clamp(14px, 3.6vw, 36px);
+      opacity: .95
+    }
+
+    .mermaid {
+      width: min(56vw, 220px);
+      height: auto;
+      margin: 10px auto 2px;
+      filter: drop-shadow(0 8px 18px #072c4d80);
+    }
+
+    .section {
+      width: min(680px, 92%);
+      background: var(--card);
+      color: #06314f;
+      border-radius: 22px;
+      padding: 18px 16px;
+      box-shadow: 0 10px 30px #05345a44;
+      border: 2px solid #ffffff88;
+      backdrop-filter: blur(4px);
+    }
+
+    .section h2 {
+      margin: 4px 0 10px;
+      font-size: 20px;
+      color: #0b3b6a;
+    }
+
+    .pill {
+      display: inline-block;
+      background: #e6f7ff;
+      color: #0b3b6a;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .map-card {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px #0000000f;
+    }
+
+    .map {
+      width: 100%;
+      height: 260px;
+      border: 0;
+      display: block;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 6px 16px #0b3b6a33;
+      transition: transform .15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 10px #0b3b6a33;
+    }
+
+    .btn.whatsapp {
+      background: var(--whatsapp);
+      color: white;
+    }
+
+    .rsvp {
+      display: grid;
+      gap: 12px;
+    }
+
+    .rsvp label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #0b3b6a
+    }
+
+    .rsvp input,
+    .rsvp select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid #c9e9f9;
+      font-size: 15px;
+      background: #f7fcff;
+    }
+
+    .footer {
+      color: #d6f2ff;
+      font-size: 12px;
+      text-align: center;
+      padding: 18px 8px 38px;
+      opacity: .9
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: #0008;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .modal-content {
+      background: white;
+      color: #06314f;
+      padding: 28px 20px;
+      border-radius: 20px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 24px #0005;
+    }
+
+    .modal-content h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #ff71b8;
+    }
+
+    .modal-content p {
+      font-size: 15px;
+    }
+
+    .modal-content button {
+      margin-top: 14px;
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="bubbles" id="bubbles"></div>
+
+      <!-- Peces animados con imágenes -->
+      <div class="fish swim-right" style="top:30%; animation-duration:24s; animation-delay:.5s">
+        <img src="images/fish-blue.png" alt="Pez azul" />
+      </div>
+      <div class="fish swim-left" style="top:55%; animation-duration:28s; animation-delay:2s">
+        <img src="images/fish-yellow.png" alt="Pez amarillo" />
+      </div>
+      <div class="fish swim-right" style="top:70%; animation-duration:30s; animation-delay:4s">
+        <img src="images/fish-orange.png" alt="Pez naranja" />
+      </div>
+
+      <div class="curved-title">
+        <svg viewBox="0 0 700 200">
+          <defs>
+            <path id="curve" d="M20,160 C200,20 500,20 680,160" />
+          </defs>
+          <text dy="-6">
+            <textPath xlink:href="#curve" startOffset="50%" text-anchor="middle">Te invito a mi fiesta</textPath>
+          </text>
+        </svg>
+      </div>
+
+      <img src="images/sirenita.png" alt="La Sirenita" class="mermaid">
+
+      <div class="name-age">Emma cumple 3 años</div>
+      <div class="sub">¡Acompáñame a celebrar bajo el mar! 🐚💫</div>
+      <div class="waves">
+        <div class="wave w1"><svg viewBox="0 0 1200 120">
+            <path d="M0,40 C150,110 350,-30 600,40 C850,110 1050,-30 1200,40 L1200,120 L0,120 Z" fill="#ffffff44" />
+          </svg></div>
+      </div>
+    </section>
+
+    <!-- Cuenta regresiva -->
+    <section class="section" id="countdown">
+      <h2>⏳ Falta para la fiesta</h2>
+      <h3 style="text-align: center; color: #1aa4c9; font-size: 65px;">15/11/2025</h3>
+      <div id="timer" style="font-size:20px; font-weight:700; text-align:center; color:#0b3b6a; letter-spacing:1px;">
+        Cargando cuenta regresiva...
+      </div>
+    </section>
+
+    <section class="section" id="ubicacion">
+      <h2>📍 Información | Ubicación</h2>
+      <div class="pill">Balneario La Vega • 12:30 PM</div>
+      <p style="margin:10px 0; font-size:14px;">La fiesta será en <strong>Balneario La Vega</strong>, Fray Junípero
+        Serra S/N, Magdalena, 76799 Tequisquiapan, Qro.</p>
+      <div class="map-card">
+        <iframe class="map" loading="lazy"
+          src="https://www.google.com/maps?q=Balneario%20La%20Vega%20Tequisquiapan&hl=es&z=15&output=embed"></iframe>
+      </div>
+    </section>
+
+    <section class="section" id="rsvp">
+      <h2>✅ Confirmar asistencia</h2>
+      <form class="rsvp" id="rsvpForm">
+        <div><label for="nombre">Tu nombre</label><input id="nombre" required /></div>
+        <div><label for="personas">¿Cuántas personas asistirán?</label><select id="personas">
+            <option>1</option>
+            <option selected>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+          </select></div>
+        <button class="btn whatsapp" type="submit">💬 Confirmar por WhatsApp</button>
+      </form>
+    </section>
+
+    <div class="footer">Hecho con 💜 para Emma • Temática sirenita</div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h3>🎉 ¡Gracias por tu confirmación!</h3>
+      <p>Recuerda llevar tu traje, bloqueador y muchas ganas de divertirte 🏊‍♀️☀️</p>
+      <button id="closeModal">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Sonido burbuja -->
+  <audio id="bubbleSound" src="audio/bubble-pop.mp3" preload="auto"></audio>
+
+  <!-- Música -->
+  <audio id="audio" loop>
+    <source src="audio/bajo-el-mar.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <button id="musicButton" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  color: white;
+  font-size: 26px;
+  box-shadow: 0 6px 16px #0003;
+  cursor: pointer;
+  z-index: 200;
+">
+    🎵
+  </button>
+
+  <script>
+    const WHATSAPP_NUMBER = "+524421465974";
+    const bubbles = document.getElementById('bubbles');
+    const bubbleSound = document.getElementById('bubbleSound');
+
+    // 🌊 Crear burbujas
+    function createBubble() {
+      const b = document.createElement('span');
+      b.className = 'bubble';
+      const size = Math.random() * 14 + 6;
+      b.style.width = b.style.height = size + "px";
+      b.style.left = Math.random() * 100 + "%";
+      b.style.animationDuration = (Math.random() * 10 + 12) + 's';
+      b.style.animationDelay = '0s';
+      bubbles.appendChild(b);
+      b.addEventListener("animationend", () => b.remove());
+    }
+    for (let i = 0; i < 40; i++) createBubble();
+    setInterval(createBubble, 400);
+
+    // 📝 Formulario RSVP
+    const form = document.getElementById('rsvpForm');
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const personas = document.getElementById('personas').value;
+      const msg = `Hola, confirmo asistencia a la fiesta de Emma. Soy ${nombre} y vamos ${personas} persona(s).`;
+      const url = `https://wa.me/${WHATSAPP_NUMBER.replace(/[^\d]/g, '')}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+      modal.style.display = 'flex';
+    });
+
+    closeModal.addEventListener('click', () => modal.style.display = 'none');
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+
+    // ⏳ Cuenta regresiva
+    const eventDate = new Date("2025-11-15T12:30:00");
+    const timerElement = document.getElementById("timer");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = eventDate - now;
+      if (diff <= 0) {
+        timerElement.textContent = "🎉 ¡El gran día ha llegado!";
+        clearInterval(interval);
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      timerElement.textContent = `${days} días • ${hours}h : ${minutes}m : ${seconds}s`;
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+
+    // 🎵 Música
+    const audio = document.getElementById('audio');
+    const btn = document.getElementById('musicButton');
+    let playing = false;
+
+    window.addEventListener('load', () => {
+      audio.volume = 0;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setTimeout(() => audio.volume = 1, 1000);
+          playing = true;
+          btn.textContent = '⏸️';
+        }).catch(err => console.log("Esperando interacción del usuario..."));
+      }
+    });
+
+    document.addEventListener('click', () => {
+      if (!playing) {
+        audio.play();
+        playing = true;
+        btn.textContent = '⏸️';
+      }
+    });
+
+    btn.addEventListener('click', () => {
+      if (!playing) {
+        audio.play();
+        playing = true;
+        btn.textContent = '⏸️';
+      } else {
+        audio.pause();
+        playing = false;
+        btn.textContent = '🎵';
+      }
+    });
+
+    // 🫧 Sonido pop en todos los botones
+    const allButtons = document.querySelectorAll("button");
+    allButtons.forEach(btn => {
+      btn.addEventListener("mouseenter", () => {
+        bubbleSound.currentTime = 0;
+        bubbleSound.volume = 0.5;
+        bubbleSound.play();
+      });
+    });
+
+    // 🐚 Modal de bienvenida con clave secreta
+    const SECRET_KEY = "Emma2025"; // Cambia la clave aquí
+    const welcomeModal = document.createElement('div');
+    welcomeModal.className = 'modal';
+    welcomeModal.innerHTML = `
+    <div class="modal-content">
+      <h3>🎉 ¡Bienvenido a la invitación de Emma!</h3>
+      <p>Ingresa la palabra secreta para acceder 🐠✨</p>
+      <input type="password" id="secretInput" placeholder="Palabra secreta" style="padding:10px; border-radius:12px; border:1px solid #c9e9f9; width:80%; margin-top:8px;">
+      <button id="unlockButton">Acceder</button>
+      <p id="errorMsg" style="color:red; display:none; margin-top:8px;">Palabra incorrecta, intenta de nuevo</p>
+    </div>
+  `;
+    document.body.appendChild(welcomeModal);
+
+    const secretInput = document.getElementById('secretInput');
+    const unlockButton = document.getElementById('unlockButton');
+    const errorMsg = document.getElementById('errorMsg');
+
+    welcomeModal.style.display = 'flex';
+
+    unlockButton.addEventListener('click', () => {
+      if (secretInput.value === SECRET_KEY) {
+        welcomeModal.style.display = 'none';
+      } else {
+        errorMsg.style.display = 'block';
+        secretInput.value = '';
+        secretInput.focus();
+      }
+    });
+
+    secretInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') unlockButton.click();
+    });
+
+  </script>
+</body>
+
+</html>
